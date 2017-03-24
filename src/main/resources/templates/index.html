@@ -1,0 +1,20 @@
+<!DOCTYPE html >
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EasySend</title>
+</head>
+<body>
+<center>
+    <b> Witaj na stronie easySend. Wyślesz tutaj sms ;) </b>
+    <p th:if="!${hasDeviceConnected}">Sparuj urządzenie z portalem :)</p>
+
+    <form th:if="${hasDeviceConnected}" action="#" id="sendsms" th:action="@{/sendsms}" th:object="${smsform}"
+          method="post">
+        <p>Do kogo: <input type="text" th:field="*{toWhoNumber}"/>
+        <p><textarea name="message" th:field="*{message}" form="sendsms">Enter text here...</textarea>
+            <input type="submit" value="Wyślij"/>
+    </form>
+</center>
+</body>
+</html>
